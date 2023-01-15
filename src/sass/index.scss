@@ -1,2 +1,93 @@
 @import './common';
 @import './example';
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 20px;
+    background-color: rgb(144, 142, 255); 
+}
+
+.search-input {
+    line-height: 1.5;
+}
+
+.search-input:hover, .search-input:focus {
+    outline: 1px rgb(60 58 145) solid;
+}
+
+.btn-submit {
+    font-size: 14px;
+    color: white;
+    border-radius: 3px;
+    border: rgb(60 58 145) solid 1px;
+    background-color: rgb(60 58 145);    
+}
+
+.btn-submit:hover,
+.btn-submit:focus {
+    outline: none;
+    box-shadow: 2px 3px 10px white;
+}
+
+.gallery {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.photo-card {
+    width: 300px;
+    box-shadow: 2px 3px 5px rgb(172, 172, 172);
+}
+
+.photo-card:hover, .photo-card:focus {
+    box-shadow: 2px 3px 10px rgb(60 58 145);
+}
+
+.photo-img {
+    width: 300px;
+    height: 200px;
+}
+
+.info {
+    font-size: 12px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.is-hidden {
+    visibility: hidden;
+}
+
+.load-more {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    width: 120px;
+    height: 35px;
+    font-size: 14px;
+    color: white;
+    border-radius: 3px;
+    border: rgb(60 58 145) solid 1px;
+    background-color: rgb(60 58 145);
+}
+
+.load-more:hover, .load-more:focus {
+    outline: none;
+    box-shadow: 2px 3px 10px rgb(60 58 145);
+}
