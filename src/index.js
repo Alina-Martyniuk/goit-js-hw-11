@@ -103,6 +103,15 @@ function loadMore() {
         .then(pictures => {
             galleryDiv.insertAdjacentHTML('beforeend', createMarkup(pictures));
             gallery.refresh();
+
+            const { height: cardHeight } = document
+            .querySelector(".gallery")
+            .firstElementChild.getBoundingClientRect();
+
+            window.scrollBy({
+            top: cardHeight * 2,
+            behavior: "smooth",
+            });
         })
         .then(() => {
             if (pageNumber === pageMax) {
@@ -111,7 +120,13 @@ function loadMore() {
             }
         })
         .catch(() => createErrorMessage());
-
-    console.log(pageNumber)
-    console.log(pageMax)
 }
+
+    // const { height: cardHeight } = document
+    // .querySelector(".gallery")
+    // .firstElementChild.getBoundingClientRect();
+
+    // window.scrollBy({
+    // top: cardHeight * 2,
+    // behavior: "smooth",
+    // });
