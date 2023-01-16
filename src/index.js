@@ -8,6 +8,7 @@ Notiflix.Notify.init({
     fontSize: '20px',
 })
 
+let gallery = new SimpleLightbox('.gallery a');
 
 const searchForm = document.querySelector(".search-form");
 const input = document.querySelector("input[name='searchQuery']");
@@ -18,9 +19,6 @@ let pageNumber = 1;
 let pictureName;
 let pageMax;
 
-let gallery = new SimpleLightbox('.gallery a');
-
-
 searchForm.addEventListener("submit", searchPicture);
 btnLoadMore.addEventListener("click", loadMore);
 
@@ -28,15 +26,14 @@ function searchPicture(evt) {
     evt.preventDefault();
 
     pictureName = input.value.trim();
+    if (!pictureName) {
+    return
+    }
 
     btnLoadMore.classList.add("is-hidden");
     
     clearMarkup();
     pageNumber = 1;
-
-    if (!pictureName) {
-        return
-    }
     
     fetchpicture(pictureName)
         .then(pictures => {
@@ -103,15 +100,7 @@ function loadMore() {
         .then(pictures => {
             galleryDiv.insertAdjacentHTML('beforeend', createMarkup(pictures));
             gallery.refresh();
-
-            const { height: cardHeight } = document
-            .querySelector(".gallery")
-            .firstElementChild.getBoundingClientRect();
-
-            window.scrollBy({
-            top: cardHeight * 2,
-            behavior: "smooth",
-            });
+            smoothScroll();
         })
         .then(() => {
             if (pageNumber === pageMax) {
@@ -122,11 +111,13 @@ function loadMore() {
         .catch(() => createErrorMessage());
 }
 
-    // const { height: cardHeight } = document
-    // .querySelector(".gallery")
-    // .firstElementChild.getBoundingClientRect();
+function smoothScroll() {
+    const { height: cardHeight } = document
+    .querySelector(".gallery")
+    .firstElementChild.getBoundingClientRect();
 
-    // window.scrollBy({
-    // top: cardHeight * 2,
-    // behavior: "smooth",
-    // });
+    window.scrollBy({
+    top: cardHeight * 2,
+    behavior: "smooth",
+    });
+}
